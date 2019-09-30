@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AndroidThird</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <integer-array name="img_id_arr">
+        <item>@drawable/smile2</item>
+        <item>@drawable/lets_start</item>
+        <item>@drawable/lets_start2</item>
+
+    </integer-array>
+
+
+</resources>
