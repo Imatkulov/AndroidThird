@@ -13,10 +13,9 @@ import com.geektech.androidthird.App;
 public class SplashActivity extends AppCompatActivity {
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         CheckIsFirstLaunch();
-        Log.e("---------------", "onCreat");
     }
 
     private void CheckIsFirstLaunch() {
@@ -28,8 +27,7 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             Log.e("----------", "false");
             MainActivity.start(this);
-        }
-
+        }finish();
     }
 }
 

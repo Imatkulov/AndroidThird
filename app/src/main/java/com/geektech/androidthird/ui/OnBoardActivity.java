@@ -37,15 +37,28 @@ public class OnBoardActivity extends AppCompatActivity {
 
         buttonskip = findViewById(R.id.buttonSkip);
         button  = findViewById(R.id.it_button);
-
         mViewPager =  findViewById(R.id.viewpager);
         mViewPager.setAdapter(new onBoardAdapter(this));
         tabLayout = findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(mViewPager, true);
-
         textView = findViewById(R.id.textView);
 
     }
+
+    public void Skip(View view) {
+    }
+
+    public void onClickNext(View view) {
+                int i = mViewPager.getCurrentItem();
+                if (i==4){
+                    MainActivity.start(this);
+                    finish();
+                }else {
+                    mViewPager.setCurrentItem(++i);
+                }
+
+    }
+
     public class onBoardAdapter extends PagerAdapter {
 
         private Context context;
@@ -72,28 +85,29 @@ public class OnBoardActivity extends AppCompatActivity {
         @Override
         public Object instantiateItem(ViewGroup collection, int position) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.activity_on_board, collection, false);
+            ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.item_view_pager, collection, false);
             ImageView onBoardImage = layout.findViewById(R.id.it_imageView);
+            TextView textViewItem = layout.findViewById(R.id.textView);
             switch (position){
                 case 0:
-                    onBoardImage.setImageDrawable(getResources().getDrawable(R.drawable.lets_start));
-                    layout.setBackgroundColor(getResources().getColor(R.color.colorPrimary1));
-                    textView.setText("Welcome");
+                    onBoardImage.setImageDrawable(context.getResources().getDrawable(R.drawable.group4));
+//                    layout.setBackgroundColor(getResources().getColor(R.color.colorPrimary1));
+                    textViewItem.setText("В данном приложении можете учиться))");
                     break;
                 case 1:
-                    onBoardImage.setImageDrawable(getResources().getDrawable(R.drawable.lets_start2));
-                    layout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark1));
-                    textView.setText("press next");
+                    onBoardImage.setImageDrawable(context.getResources().getDrawable(R.drawable.update));
+//                    layout.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark1));
+                    textViewItem.setText("В данном приложении можете обновить");
                     break;
                 case 2:
-                    onBoardImage.setImageDrawable(getResources().getDrawable(R.drawable.smile1));
-                    layout.setBackgroundColor(getResources().getColor(R.color.colorAccent1));
-                    textView.setText("also next");
+                    onBoardImage.setImageDrawable(context.getResources().getDrawable(R.drawable.delete));
+//                    layout.setBackgroundColor(getResources().getColor(R.color.colorAccent1));
+                    textViewItem.setText("В данном приложении можете удалить");
                     break;
                 case 3:
-                    onBoardImage.setImageDrawable(getResources().getDrawable(R.drawable.smile2));
-                    layout.setBackgroundColor(getResources().getColor(R.color.colorAccent2));
-                    textView.setText("press start");
+                    onBoardImage.setImageDrawable(context.getResources().getDrawable(R.drawable.thank));
+//                    layout.setBackgroundColor(getResources().getColor(R.color.colorAccent2));
+                    textViewItem.setText("Спасибо что вы с нами");
                     break;
             }
             collection.addView(layout);
