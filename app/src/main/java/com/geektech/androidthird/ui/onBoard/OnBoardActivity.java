@@ -1,4 +1,4 @@
-package com.geektech.androidthird.ui;
+package com.geektech.androidthird.ui.onBoard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.geektech.androidthird.R;
+import com.geektech.androidthird.ui.main.MainActivity;
 import com.google.android.material.tabs.TabLayout;
 
 public class OnBoardActivity extends AppCompatActivity {
@@ -50,7 +51,7 @@ public class OnBoardActivity extends AppCompatActivity {
 
     public void onClickNext(View view) {
                 int i = mViewPager.getCurrentItem();
-                if (i==4){
+                if (i==3){
                     MainActivity.start(this);
                     finish();
                 }else {

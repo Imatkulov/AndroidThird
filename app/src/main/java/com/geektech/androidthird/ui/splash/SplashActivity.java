@@ -1,14 +1,14 @@
-package com.geektech.androidthird.ui;
+package com.geektech.androidthird.ui.splash;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.geektech.androidthird.App;
+import com.geektech.androidthird.ui.main.MainActivity;
+import com.geektech.androidthird.ui.onBoard.OnBoardActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
