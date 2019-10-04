@@ -27,12 +27,13 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView temperature;
-    TextView humidity;
     EditText editText;
+    TextView temperature;
+    TextView weather;
+    TextView wind;
+    TextView humidity;
     Button button;
     ImageView imageView;
-//    LottieAnimationView lottieAnimationView;
 
     public static void start(Context context){
         context.startActivity(new Intent(context, MainActivity.class));
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.btn_weather);
         imageView = findViewById(R.id.main_imageView);
         humidity = findViewById(R.id.humidity);
-//        lottieAnimationView = findViewById(R.id.main_Lottie);
+        wind = findViewById(R.id.wind);
+        weather = findViewById(R.id.weather);
         getCurrentWeather();
     }
 
@@ -62,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
                         if (response != null && response.isSuccessful() && response.body() != null) {
                             temperature.setText(response.body().getMain().getTemp().toString());
                             humidity.setText(response.body().getMain().getHumidity().toString());
-                            Glide.with(MainActivity.this).load("http://openweathermap.org/img/wn/" + response.body().getWeather().get(0).getIcon()+"@2x.png").into(imageView);
+                            wind.setText(response.body().getWind().getSpeed().toString());
+                            weather.setText(response.body().getWeather().get(0).getMain());
+                            Glide.with(MainActivity.this).load("http://openweathermap.org/img/wn/" + response.body().
+                                    getWeather().get(0).getIcon()+"@2x.png").into(imageView);
 
                             Toast.makeText(getApplicationContext(), response.body().getName(), Toast.LENGTH_LONG).show();
                             Log.e("getCurrentWeather", response.body().getName());

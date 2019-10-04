@@ -11,5 +11,7 @@ public interface RetrofitService {
         @GET("weather")
         Call<CurrentWeatrerModel> getWeatherByCity(@Query("q") String city, @Query("units") String unit, @Query("APPID") String appid);
 
+
+
 }
 
