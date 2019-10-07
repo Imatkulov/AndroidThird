@@ -1,4 +1,4 @@
-package com.geektech.androidthird.data;
+package com.geektech.androidthird.data.sharedPreference;
 
 import android.content.Context;
 import android.content.SharedPreferences;

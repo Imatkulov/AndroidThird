@@ -2,14 +2,17 @@ package com.geektech.androidthird.ui.main;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,71 +23,49 @@ import com.geektech.androidthird.R;
 import com.geektech.androidthird.data.model.current_weather.com.example.CurrentWeatrerModel;
 import com.geektech.androidthird.data.network.RetrofitBuilder;
 import com.geektech.androidthird.data.network.RetrofitService;
+import com.geektech.androidthird.ui.base.BaseActivity;
+import com.geektech.androidthird.ui.map.MapFragment;
+import com.geektech.androidthird.ui.weather.WeatherFragment;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-    EditText editText;
-    TextView temperature;
-    TextView weather;
-    TextView wind;
-    TextView humidity;
-    Button button;
-    ImageView imageView;
+    @BindView(R.id.main_Framelayout)
+    FrameLayout main_Framelayout;
+    @BindView(R.id.btn_map)
+    Button btn_map;
+    Fragment fragment;
+    MapFragment mapFragment = new MapFragment();
+    WeatherFragment weatherFragment = new WeatherFragment();
 
     public static void start(Context context){
         context.startActivity(new Intent(context, MainActivity.class));
-
+    }
+    @Override
+    protected Integer getResId() {
+        return R.layout.activity_main;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        editText = findViewById(R.id.editWeather);
-        temperature = findViewById(R.id.temperature);
-        button = findViewById(R.id.btn_weather);
-        imageView = findViewById(R.id.main_imageView);
-        humidity = findViewById(R.id.humidity);
-        wind = findViewById(R.id.wind);
-        weather = findViewById(R.id.weather);
-        getCurrentWeather();
+        fragment = weatherFragment;
+        setFragment();
     }
 
-    private void getCurrentWeather() {
-        String city = editText.getText().toString().trim();
-
-        RetrofitBuilder.getService().getWeatherByCity(city,"metric", getResources().getString(R.string.api_key))
-                .enqueue(new Callback<CurrentWeatrerModel>() {
-                    @Override
-                    public void onResponse(@Nullable Call<CurrentWeatrerModel> call, @Nullable Response<CurrentWeatrerModel> response) {
-                        if (response != null && response.isSuccessful() && response.body() != null) {
-                            temperature.setText(response.body().getMain().getTemp().toString());
-                            humidity.setText(response.body().getMain().getHumidity().toString());
-                            wind.setText(response.body().getWind().getSpeed().toString());
-                            weather.setText(response.body().getWeather().get(0).getMain());
-                            Glide.with(MainActivity.this).load("http://openweathermap.org/img/wn/" + response.body().
-                                    getWeather().get(0).getIcon()+"@2x.png").into(imageView);
-
-                            Toast.makeText(getApplicationContext(), response.body().getName(), Toast.LENGTH_LONG).show();
-                            Log.e("getCurrentWeather", response.body().getName());
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Error server", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    @Override
-                    public void onFailure(@Nullable Call<CurrentWeatrerModel> call, @Nullable Throwable t) {
-                        if (t != null)
-                            Log.e("getCurrentWeather", t.getLocalizedMessage());
-                    }
-                });
+    private  void setFragment(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_Framelayout, fragment).commit();
     }
-
-    public void onShowWeather(View view) {
-        getCurrentWeather();
+    @OnClick(R.id.btn_map)
+    public void showMap(){
+        fragment = mapFragment;
+        setFragment();
     }
 }
 

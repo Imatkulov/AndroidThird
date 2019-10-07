@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
+
+
     buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.geektech.androidthird"
@@ -20,6 +22,10 @@ android {
 
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -35,6 +41,13 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
     /*Lottie*/
     implementation "com.airbnb.android:lottie:3.0.7"
+
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:8.4.0'
+
+
 
 
 

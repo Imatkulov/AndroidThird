@@ -47,6 +47,8 @@ public class OnBoardActivity extends AppCompatActivity {
     }
 
     public void Skip(View view) {
+
+
     }
 
     public void onClickNext(View view) {
