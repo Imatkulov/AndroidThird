@@ -10,8 +10,7 @@ public class MapFragment  extends BaseMapFragment {
 
 
     @Override
-    protected Integer getResId() {
-        return R.layout.fragment_map;
+    protected Integer getResId() { return R.layout.fragment_map;
     }
 
 
