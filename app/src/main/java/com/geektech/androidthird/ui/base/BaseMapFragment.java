@@ -39,10 +39,11 @@ public abstract class BaseMapFragment extends BaseFragment{
             @Override
             public void onMapReady(@NonNull MapboxMap mapboxMap) {
                 map = mapboxMap;
-                mapboxMap.setStyle(Style.MAPBOX_STREETS);
+                mapboxMap.setStyle(Style.TRAFFIC_NIGHT);
                 //mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> mapboxMap.animateCamera(new CameraUpdateFactory().newLatLng(new LatLng(42.874476, 74.590739)), 3000));
 //        camera position bishkek
-                mapboxMap.addMarker(new MarkerOptions().setPosition(new LatLng(42.874733, 74.591904,14.92)).setTitle("Bishkek"));
+                mapboxMap.addMarker(new MarkerOptions().setPosition
+                        (new LatLng(42.874733, 74.591904,14.92)).setTitle("Bishkek"));
                 CameraPosition position = new CameraPosition.Builder()
                         .target(new LatLng(42.874733, 74.591904,14.92)) // Sets the new camera position
                         .zoom(15) // Sets the zoom
@@ -50,8 +51,7 @@ public abstract class BaseMapFragment extends BaseFragment{
                         .tilt(30) // Set the camera tilt
                         .build(); // Creates a CameraPosition from the builder
                 mapboxMap.animateCamera(CameraUpdateFactory
-                        .newCameraPosition(position), 5000);
-
+                        .newCameraPosition(position), 3000);
             }
         });
     }
