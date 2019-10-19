@@ -28,14 +28,14 @@ public class OnBoardActivity extends AppCompatActivity {
     ViewPager mViewPager;
     TabLayout tabLayout;
     TextView textView;
-    Button buttonskip, button;
+    Button buttonskip;
+    Button button;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_board);
-
         buttonskip = findViewById(R.id.buttonSkip);
         button  = findViewById(R.id.it_button);
         mViewPager =  findViewById(R.id.viewpager);
@@ -48,18 +48,18 @@ public class OnBoardActivity extends AppCompatActivity {
 
     public void Skip(View view) {
 
-
     }
 
     public void onClickNext(View view) {
+
+//                if(mViewPager.getCurrentItem() == )
                 int i = mViewPager.getCurrentItem();
                 if (i==3){
                     MainActivity.start(this);
                     finish();
                 }else {
-                    mViewPager.setCurrentItem(++i);
+                    mViewPager.setCurrentItem(mViewPager.getCurrentItem()+1);
                 }
-
     }
 
     public class onBoardAdapter extends PagerAdapter {

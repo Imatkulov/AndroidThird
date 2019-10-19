@@ -61,7 +61,6 @@ public abstract class BaseWeatherFragment extends BaseFragment {
                             Toast.makeText(getContext(), response.body().getName(), Toast.LENGTH_LONG).show();
                             Log.e("getCurrentWeather", response.body().getName());
                         } else {
-                            Toast.makeText(getContext(), "Error server", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override

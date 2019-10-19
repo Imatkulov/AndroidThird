@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:mapbox="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -9,14 +8,17 @@
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-<!--        mapbox:mapbox_cameraTargetLat="42.874622"-->
-<!--        mapbox:mapbox_cameraTargetLng="74.569763"-->
-<!--        mapbox:mapbox_cameraZoom="15"-->
-<!--        mapbox:mapbox_cameraBearing="0"-->
-<!--        mapbox:mapbox_cameraTilt="50"-->
-<!--        mapbox:mapbox_cameraZoomMax="15"-->
-<!--        mapbox:mapbox_cameraZoomMin="1"-->
-<!--        mapbox:mapbox_uiRotateGestures="false"/>-->
+        android:layout_height="match_parent">
 
-</FrameLayout>
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/smile1"
+        android:layout_margin="30dp"
+        android:layout_gravity="center|bottom"/>
+
+    </com.mapbox.mapboxsdk.maps.MapView>
+
+
+</LinearLayout>
