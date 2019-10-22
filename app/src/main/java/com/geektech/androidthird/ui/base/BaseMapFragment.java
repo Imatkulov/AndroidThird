@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.geektech.androidthird.R;
+import com.geektech.androidthird.ui.TrackingService;
 import com.geektech.androidthird.ui.main.MainActivity;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
@@ -44,6 +45,8 @@ public abstract class BaseMapFragment extends BaseFragment implements MapboxMap.
     private Symbol symbol;
     @BindView(R.id.imageButton)
     ImageButton imageButton;
+    @BindView(R.id.imageButtonStop)
+    ImageButton imageButtonStop;
     NotificationManagerCompat notificationManager;
 
 
@@ -56,12 +59,8 @@ public abstract class BaseMapFragment extends BaseFragment implements MapboxMap.
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mapView.onCreate(savedInstanceState);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getNotification();
-            }
-        });
+        imageButton.setOnClickListener(view1 -> getActivity().startService(new Intent(getContext(), TrackingService.class)));
+        imageButtonStop.setOnClickListener(view1 -> getActivity().stopService(new Intent(getContext(), TrackingService.class)));
 
 
         mapView.getMapAsync(mapboxMap -> {
@@ -76,9 +75,6 @@ public abstract class BaseMapFragment extends BaseFragment implements MapboxMap.
                 symbol = symbolManager.create(createMarkers(new LatLng(12.0, 12.0), ID_ICON_AIRPORT));
             });
 
-//            map = mapboxMap;
-//            mapboxMap.setStyle(Style.LIGHT);
-//
             mapboxMap.addMarker(new MarkerOptions().setPosition(new LatLng(42.874733, 74.591904, 14.92)));
             CameraPosition position = new CameraPosition.Builder()
                     .target(new LatLng(42.874733, 74.591904, 14.92)) // Sets the new camera position

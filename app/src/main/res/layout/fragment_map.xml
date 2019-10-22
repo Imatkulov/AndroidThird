@@ -14,9 +14,17 @@
         android:id="@+id/imageButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/smile1"
+        android:background="@drawable/ic_play_circle_outline_black_24dp"
         android:layout_margin="30dp"
-        android:layout_gravity="center|bottom"/>
+        android:layout_gravity="left|bottom"/>
+
+        <ImageButton
+        android:id="@+id/imageButtonStop"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_stop_black_24dp"
+        android:layout_margin="30dp"
+        android:layout_gravity="right|bottom"/>
 
     </com.mapbox.mapboxsdk.maps.MapView>
 

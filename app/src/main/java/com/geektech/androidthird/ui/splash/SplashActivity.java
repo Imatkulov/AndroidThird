@@ -19,7 +19,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void CheckIsFirstLaunch() {
-
         if (App.getPreferenceHelper().IsFirstLaunch()){
             Log.e("----------", "true");
 //            App.getPreferenceHelper().setIsFirstLaunch();
