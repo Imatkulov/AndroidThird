@@ -78,7 +78,7 @@ public class TrackingService extends Service {
         resultPendingIntent.getIntentSender();
 
         Notification notification = new NotificationCompat.Builder(getApplicationContext(), ANDROID_CHANNEL_ID)
-                .setSmallIcon(R.drawable.mapbox_compass_icon)
+                .setSmallIcon(R.drawable.ic_message_black_24dp)
                 .setAutoCancel(true)
                 .setContentTitle("My Notification")
                 .setContentText("Ваше местоположение")
